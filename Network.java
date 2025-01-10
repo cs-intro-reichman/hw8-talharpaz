@@ -68,6 +68,7 @@ public class Network {
          User user1 = getUser(name1);
          User user2 = getUser(name2);
         if ( user1 == null || user2 == null)return false;
+        if (user1.equals(user2)) return false;
 
         return user1.addFollowee(user2.getName());
         
@@ -133,6 +134,6 @@ public class Network {
             }
         }
         
-       return ans;
+       return  "Network:\n" + ans;
     }
 }
