@@ -29,7 +29,11 @@ public class Network {
      *  If there is no such user, returns null.
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
-        //// Replace the following statement with your code
+      
+        for (int i = 0; i < users.length; i++) {
+            if (users[i] != null && users[i].toString().equals(name))return users[i];
+     }
+     
         return null;
     }
 

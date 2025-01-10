@@ -10,9 +10,17 @@
     private String[] follows;  // array of user names that this user follows
     private int fCount;        // actual number of followees (must be <= maxfCount)
 
+    public static String capitalize (String name){
+        if (name == null || name.isEmpty()) return name;
+
+    
+        return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+
+    }
+
     /** Creates a user with an empty list of followees. */
     public User(String name) {
-        this.name = name;
+        this.name = capitalize(name);
         follows = new String[maxfCount]; // fixed-size array for storing followees
         fCount = 0;                      // initial number of followees
     }
@@ -44,6 +52,7 @@
 
     /** If this user follows the given name, returns true; otherwise returns false. */
     public boolean follows(String name) {
+        name = capitalize(name);
         for (int i = 0; i < follows.length; i++) {
            if (follows[i] != null && follows[i].equals(name))return true;
     }
@@ -52,6 +61,7 @@
     /** Makes this user follow the given name. If successful, returns true. 
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
+        name=capitalize(name);
         for (int i = 0; i < follows.length; i++) {
             if (follows[i]== null){
                 follows[i] = name;  
