@@ -45,15 +45,13 @@
     /** If this user follows the given name, returns true; otherwise returns false. */
     public boolean follows(String name) {
         for (int i = 0; i < follows.length; i++) {
-           if (follows[i].equals(name))return true;
+           if (follows[i] != null && follows[i].equals(name))return true;
     }
     return false;
     }
     /** Makes this user follow the given name. If successful, returns true. 
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
-        if (follows(name)) return false;
-        if (isArrFull(follows)) return false;
         for (int i = 0; i < follows.length; i++) {
             if (follows[i]== null){
                 follows[i] = name;  
@@ -62,20 +60,14 @@
      }
     return true;
     }
-    public boolean isArrFull (String [] arr){
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == null) return false;
-            
-        }
-        return true;
-    }
+   
 
     /** Removes the given name from the follows list of this user. If successful, returns true.
      *  If the name is not in the list, does nothing and returns false. */
     public boolean removeFollowee(String name) {
         int index = -1;
         for (int i = 0; i < follows.length; i++) {
-            if (follows[i].equals(name)){
+            if (follows[i] != null && follows[i].equals(name)){
              index = i; 
              follows[i] = "null";
              break;
@@ -86,7 +78,7 @@
                 for (int i = index; i < fCount-1; i++) {
                     follows[i] = follows[i+1];  
                 }
-                follows[fCount-1] = "null";
+                follows[fCount-1] = null;
                 fCount--;
                 return true;
             }
@@ -101,7 +93,7 @@
         int count= 0;
         for (int i = 0; i < this.fCount; i++) {
             for (int j = 0;j < other.fCount; j++) {
-                if (this.follows[i].equals(other.follows[j])){
+                if (this.follows[i] != null &&  other.follows[j] != null && this.follows[i].equals(other.follows[j])){
                     count++;
                 }
             }
