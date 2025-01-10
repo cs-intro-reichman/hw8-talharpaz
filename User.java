@@ -64,7 +64,7 @@
         name=capitalize(name);
          
         for (int i = 0; i < follows.length; i++) {
-            if ( follows[i] == name || isArrFull(follows)) return false;
+            if ( follows(name) || isArrFull(follows)) return false;
             
             if (follows[i]== null){
                 follows[i] = name;  
